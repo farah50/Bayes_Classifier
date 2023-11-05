@@ -39,6 +39,25 @@ def train_validate_test_split(data, labels, test_ratio=0.3, val_ratio=0.3, rando
 classifier = GaussianNB()
 classifier.fit(X_train, Y_train)
 
+
+# calculate_accuracy function
+def calculate_accuracy(predicted_y, y):
+    correct = 0
+    total = len(y)
+
+    for i in range(total):
+        if predicted_y[i] == y[i]:
+            correct += 1
+
+    accuracy = correct / total
+    return accuracy
+
+# Calculate accuracy
+predicted_y = classifier.predict(X_test)
+accuracy = calculate_accuracy(predicted_y, Y_test)
+print(f"Test Accuracy: {accuracy * 100:.2f}%")
+
+
 # Draw decision boundaries
 # Create a grid for decision boundary visualization
 x_min, x_max = X_train[:, 0].min() - 1, X_train[:, 0].max() + 1
