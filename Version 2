@@ -52,10 +52,14 @@ def calculate_accuracy(predicted_y, y):
     accuracy = correct / total
     return accuracy
 
-# Calculate accuracy
 predicted_y = classifier.predict(X_test)
 accuracy = calculate_accuracy(predicted_y, Y_test)
 print(f"Test Accuracy: {accuracy * 100:.2f}%")
+
+# Calculate the validation accuracy
+predicted_val = classifier.predict(X_train)
+Val_accuracy = calculate_accuracy(predicted_val, Y_train)
+print(f"Validation Accuracy: {Val_accuracy * 100:.2f}%")
 
 
 # Draw decision boundaries
